@@ -9,6 +9,19 @@ class Pipeline:
         print(df.head())
         print("\nTotal rows:", len(df))
         print("Total columns:",len(df.columns))
+
+        #Calculate a data-quality score
+
+        # CURRENT CODE ONLY MEASURES COMPLETENESS ONLY
+        
         print("\nMissing values per column:")
         print(df.isnull().sum())
         print("\nDuplicate rows:",df.duplicated().sum())
+        missing_values=df.isnull().sum().sum()
+        total_cells = df.size
+
+        if total_cells > 0:
+            completeness_score = ((total_cells - missing_values) / total_cells) * 100
+        else:
+            completeness_score = 100.0
+        print("\nCompleteness score:", round(completeness_score,2), "%")
