@@ -1,3 +1,3 @@
 from edaclean import Pipeline
-pipeline = Pipeline(source="sales.csv")
+pipeline = Pipeline(source="examples/sales.csv")
 pipeline.run()
