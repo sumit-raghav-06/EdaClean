@@ -1,8 +1,12 @@
+from pathlib import Path
 import pandas as pd
 class Pipeline:
     def __init__(self, source):
         self.source = source
     def run(self):
+        if not Path(self.source).is_file():
+            print(f"Error: File not found:{self.source}")
+            return
         df=pd.read_csv(self.source)
         print(f"EdaClean is processing:{self.source}")
         print("\nDataset preview:")
